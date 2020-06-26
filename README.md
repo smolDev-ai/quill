@@ -1,2 +1,2 @@
 # quill
-An Open Source CMS Built With VueJS, Node, Express, and Postgres.
+An Open Source CMS Built With React, Node, Express, and Postgres.
