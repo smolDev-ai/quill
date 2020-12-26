@@ -1,12 +1,12 @@
 const db = require("../dbConfig");
 
 module.exports = {
-    findById,
+    getAllUsers,
     add,
 }
 
-function findById(id) {
-    return db("users").select("id", "username").where({ id })
+function getAllUsers() {
+    return db("users").select("id", "username", "role");
 }
 
 
