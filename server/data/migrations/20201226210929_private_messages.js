@@ -4,8 +4,8 @@ exports.up = function(knex) {
       if(!exists) {
           return knex.schema.createTable("private_messages", tbl => {
               tbl.increments("id"),
-              tbl.integer("creator").unsigned().references("id").inTable("user").onUpdate("CASCADE").onDelete("CASCADE").notNullable(),
-              tbl.string("title").notNullable(),
+              tbl.integer("creator").unsigned().references("id").inTable("users").onUpdate("CASCADE").onDelete("CASCADE").notNullable(),
+              tbl.string("title").notNullable()
           })
       }
   })

@@ -6,7 +6,7 @@ module.exports = {
 }
 
 function getAllUsers() {
-    return db("users").select("id", "username", "role");
+    return db("users").select("id", "username");
 }
 
 

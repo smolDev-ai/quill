@@ -6,7 +6,7 @@ exports.up = function(knex) {
                 tbl.increments("id"),
                 tbl.string("name").unique().notNullable(),
                 tbl.varchar("description", 255).notNullable(),
-                tbl.integer("category_id").unsigned().references("id").inTable("categories").onUpdate("CASCADE").onDelete("CASCADE").notNullable(),
+                tbl.integer("category_id").unsigned().references("id").inTable("categories").onUpdate("CASCADE").onDelete("CASCADE").notNullable()
                 
             })
         }
