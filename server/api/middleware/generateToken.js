@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { jwtSecret } = require("../config/config.js");
+const { jwtSecret } = require("../../config/config");
 
 module.exports = user => {
   const jwtPayload = {
