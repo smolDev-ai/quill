@@ -32,27 +32,28 @@ function findUserAndRoles(user_id) {
         .first()
 }
 
-function add(user) {
+async function add(user) {
     const { roles } = user;
     delete user.roles
+    let id;
     return db("users").insert(user, "id").then(ids => {
-        const [id] = ids;
+        id = ids[0];
+        console.log("line 41", id)
         return findUserById(id).then(found => {
             if(roles.length > 1) {
-                return roles.map(userRole => {
+                return Promise.all(roles.map(userRole => {
                     return db("roles").where({"name": userRole}).first().then(role => {
-                        return db("roles_users").insert({ "user_id": found.id, "role_id": role.id }).then(FullUser => {
-                            return findUserAndRoles(found.id)
-                        })
+                        return db("roles_users").insert({ "user_id": found.id, "role_id": role.id })
                     })
-                })
+                }))
             } else {
                 return db("roles").where({"name": roles[0]}).first().then(role => {
-                    return db("roles_users").insert({ "user_id": found.id, "role_id": role.id }).then(FullUser => {
-                        return findUserAndRoles(found.id)
-                    })
+                    return db("roles_users").insert({ "user_id": found.id, "role_id": role.id })
                 })
             }
+        }).then(res => {
+            console.log(res)
+            return findUserAndRoles(id)
         })
     })
 }
