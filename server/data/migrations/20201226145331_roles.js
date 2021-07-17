@@ -19,6 +19,9 @@ exports.up = function(knex) {
               tbl.boolean("editRoles").defaultTo(false),
               tbl.boolean("deleteRoles").defaultTo(false),
               tbl.boolean("editUserRoles").defaultTo(false),
+              tbl.boolean("canBanUser").defaultTo(false),
+              tbl.boolean("canWarnUser").defaultTo(false),
+              tbl.boolean("canReport").defaultTo(true),
               tbl.boolean("isBannable").defaultTo(true)
           })
       }

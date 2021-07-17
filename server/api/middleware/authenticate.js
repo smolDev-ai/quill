@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const { jwtSecret } = require('../../config/config');
 
+
+
 module.exports = (req, res, next) => {
 	
 	 // * Get the token from the authorization header.
@@ -21,3 +23,4 @@ module.exports = (req, res, next) => {
 		res.status(400).json({ Message: "No Token." });
 	}
 };
+
